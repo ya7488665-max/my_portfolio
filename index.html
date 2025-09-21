@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | GOX</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/GOX.png" type="image/png">
     <style>
         /* Professional style with modern colors and advanced animations */
         :root {
@@ -40,6 +41,16 @@
             overflow-x: hidden;
         }
 
+        /* RTL (Right-to-Left) Styles for Arabic */
+        html[dir="rtl"] {
+            direction: rtl;
+        }
+        
+        /* Ensure specific elements are not affected by RTL */
+        .gox-logo {
+            direction: ltr;
+        }
+        
         .hidden {
             display: none !important;
         }
@@ -264,6 +275,31 @@
         .header .logo img {
             height: 50px;
         }
+        
+        /* Language Toggle Button Style */
+        .lang-toggle {
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-color);
+            padding: 8px 12px;
+            border: 1px solid var(--secondary-text-color);
+            border-radius: 5px;
+            background-color: transparent;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            margin-right: 15px;
+        }
+        
+        .lang-toggle:hover {
+            background-color: var(--hover-color);
+            color: white;
+            border-color: var(--hover-color);
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
 
         .header-icons .open-sidebar {
             font-size: 24px;
@@ -279,6 +315,7 @@
         .theme-toggle {
             cursor: pointer;
             font-size: 20px;
+            margin-left: 10px; /* Add some space */
         }
 
         /* Sections */
@@ -487,7 +524,6 @@
                 text-align: center;
             }
         }
-        <link rel="icon" href="images/GOX.png" type="image/png">
     </style>
 </head>
 <body>
@@ -500,16 +536,16 @@
         </div>
     </div>
 
-    <div id="login-page" class="login-page hidden"> 
+    <div id="login-page" class="login-page hidden">
         <form id="login-form" class="login-form">
-            <h2>Login</h2>
+            <h2 data-i18n="login_title">Login</h2>
             <div class="input-group">
-                <input type="text" id="username" placeholder="username" required>
+                <input type="text" id="username" data-i18n="username_placeholder" placeholder="username" required>
             </div>
             <div class="input-group">
-                <input type="password" id="password" placeholder="password" required>
+                <input type="password" id="password" data-i18n="password_placeholder" placeholder="password" required>
             </div>
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn" data-i18n="login_btn">Login</button>
         </form>
     </div>
 
@@ -518,10 +554,10 @@
             <i class="fas fa-times close-sidebar"></i>
         </div>
         <nav class="sidebar-nav">
-            <a href="#about">About Me</a>
-            <a href="#services">My Services</a>
-            <a href="#projects">My Projects</a>
-            <a href="#contact">Contact Me</a>
+            <a href="#about" data-i18n="nav_about">About Me</a>
+            <a href="#services" data-i18n="nav_services">My Services</a>
+            <a href="#projects" data-i18n="nav_projects">My Projects</a>
+            <a href="#contact" data-i18n="nav_contact">Contact Me</a>
         </nav>
     </div>
 
@@ -531,6 +567,7 @@
                 <img src="images/GOX.png" alt="GOX Logo">
             </div>
             <div class="header-icons">
+                <button class="lang-toggle" id="lang-toggle">AR</button>
                 <i class="fas fa-bars open-sidebar"></i>
                 <i class="fas fa-sun theme-toggle light-mode-icon"></i>
                 <i class="fas fa-moon theme-toggle dark-mode-icon"></i>
@@ -541,13 +578,13 @@
             <section id="about" class="section about-me container">
                 <div class="about-container">
                     <div class="about-text">
-                        <h1 class="hero-title">Hello, I'm <span class="typing-animation">YASEEN</span></h1>
-                        <h3>Web Developer / GOX</h3>
-                        <p>
+                        <h1 class="hero-title" data-i18n="hero_title">Hello, I'm <span class="typing-animation">YASEEN</span></h1>
+                        <h3 data-i18n="hero_subtitle">Web Developer / GOX</h3>
+                        <p data-i18n="about_text">
                             A web developer specializing in building engaging and effective digital experiences. 
                             I work to transform ideas into reality using the latest front-end technologies.
                         </p>
-                        <a href="#projects" class="btn">Discover My Projects</a>
+                        <a href="#projects" class="btn" data-i18n="discover_projects_btn">Discover My Projects</a>
                     </div>
                     <div class="profile-photo">
                         <img src="images/GOX.png" alt="Profile Photo">
@@ -556,71 +593,71 @@
             </section>
 
             <section id="services" class="section services container">
-                <h2>My Services</h2>
+                <h2 data-i18n="services_title">My Services</h2>
                 <div class="services-grid">
                     <div class="service-card">
                         <i class="fas fa-code"></i>
-                        <h3>Web Development</h3>
-                        <p>Building dynamic websites and web applications using the latest technologies.</p>
+                        <h3 data-i18n="service_dev_title">Web Development</h3>
+                        <p data-i18n="service_dev_text">Building dynamic websites and web applications using the latest technologies.</p>
                     </div>
                     <div class="service-card">
                         <i class="fas fa-mobile-alt"></i>
-                        <h3>UX/UI Design</h3>
-                        <p>Designing attractive and user-friendly interfaces.</p>
+                        <h3 data-i18n="service_ui_title">UX/UI Design</h3>
+                        <p data-i18n="service_ui_text">Designing attractive and user-friendly interfaces.</p>
                     </div>
                     <div class="service-card">
                         <i class="fas fa-database"></i>
-                        <h3>Database Management</h3>
-                        <p>Designing and implementing powerful and efficient databases.</p>
+                        <h3 data-i18n="service_db_title">Database Management</h3>
+                        <p data-i18n="service_db_text">Designing and implementing powerful and efficient databases.</p>
                     </div>
                 </div>
             </section>
 
             <section id="projects" class="section projects container">
-                <h2>My Projects</h2>
+                <h2 data-i18n="projects_title">My Projects</h2>
                 <div class="projects-grid">
                     <div class="project-card">
                         <img src="images/GOX.png" alt="Project 1">
-                        <h3>First Project Name</h3>
-                        <p>A brief description of the first project and what was accomplished.</p>
-                        <a href="#" class="btn-sm">View Project</a>
+                        <h3 data-i18n="project1_title">First Project Name</h3>
+                        <p data-i18n="project1_text">A brief description of the first project and what was accomplished.</p>
+                        <a href="#" class="btn-sm" data-i18n="view_project_btn">View Project</a>
                     </div>
                     <div class="project-card">
                         <img src="images/GOX.png" alt="Project 2">
-                        <h3>Second Project Name</h3>
-                        <p>A brief description of the second project and the technologies used.</p>
-                        <a href="#" class="btn-sm">View Project</a>
+                        <h3 data-i18n="project2_title">Second Project Name</h3>
+                        <p data-i18n="project2_text">A brief description of the second project and the technologies used.</p>
+                        <a href="#" class="btn-sm" data-i18n="view_project_btn">View Project</a>
                     </div>
                     <div class="project-card">
                         <img src="images/GOX.png" alt="Project 3">
-                        <h3>Third Project Name</h3>
-                        <p>A brief description of the third project and the results achieved.</p>
-                        <a href="#" class="btn-sm">View Project</a>
+                        <h3 data-i18n="project3_title">Third Project Name</h3>
+                        <p data-i18n="project3_text">A brief description of the third project and the results achieved.</p>
+                        <a href="#" class="btn-sm" data-i18n="view_project_btn">View Project</a>
                     </div>
                 </div>
             </section>
 
             <section id="contact" class="section contact container">
-                <h2>Contact Me</h2>
+                <h2 data-i18n="contact_title">Contact Me</h2>
                 <div class="contact-info-container">
                     <div class="contact-item">
                         <p id="my-email">ya7488665@gmail.com</p>
                         <button class="copy-btn" onclick="copyText('my-email')">
-                            <i class="fas fa-copy"></i> Copy Email
+                            <i class="fas fa-copy"></i> <span data-i18n="copy_email_btn">Copy Email</span>
                         </button>
                     </div>
                     <div class="contact-item">
                         <p id="my-phone">01068025604</p>
                         <button class="copy-btn" onclick="copyText('my-phone')">
-                            <i class="fas fa-copy"></i> Copy Phone
+                            <i class="fas fa-copy"></i> <span data-i18n="copy_phone_btn">Copy Phone</span>
                         </button>
                     </div>
                 </div>
                 <form id="contact-form" class="contact-form">
-                    <input type="text" name="name" placeholder="Your Full Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn">Send Message</button>
+                    <input type="text" name="name" data-i18n="form_name" placeholder="Your Full Name" required>
+                    <input type="email" name="email" data-i18n="form_email" placeholder="Your Email" required>
+                    <textarea name="message" rows="5" data-i18n="form_message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn" data-i18n="form_send_btn">Send Message</button>
                 </form>
                 <div class="social-links">
                     <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -633,6 +670,125 @@
     </div>
     
     <script>
+        // Language translations object
+        const translations = {
+            en: {
+                // Login Page
+                login_title: "Login",
+                username_placeholder: "username",
+                password_placeholder: "password",
+                login_btn: "Login",
+                // Sidebar
+                nav_about: "About Me",
+                nav_services: "My Services",
+                nav_projects: "My Projects",
+                nav_contact: "Contact Me",
+                // About Section
+                hero_title: "Hello, I'm ",
+                hero_subtitle: "Web Developer / GOX",
+                about_text: "A web developer specializing in building engaging and effective digital experiences. I work to transform ideas into reality using the latest front-end technologies.",
+                discover_projects_btn: "Discover My Projects",
+                // Services Section
+                services_title: "My Services",
+                service_dev_title: "Web Development",
+                service_dev_text: "Building dynamic websites and web applications using the latest technologies.",
+                service_ui_title: "UX/UI Design",
+                service_ui_text: "Designing attractive and user-friendly interfaces.",
+                service_db_title: "Database Management",
+                service_db_text: "Designing and implementing powerful and efficient databases.",
+                // Projects Section
+                projects_title: "My Projects",
+                project1_title: "First Project Name",
+                project1_text: "A brief description of the first project and what was accomplished.",
+                project2_title: "Second Project Name",
+                project2_text: "A brief description of the second project and the technologies used.",
+                project3_title: "Third Project Name",
+                project3_text: "A brief description of the third project and the results achieved.",
+                view_project_btn: "View Project",
+                // Contact Section
+                contact_title: "Contact Me",
+                copy_email_btn: "Copy Email",
+                copy_phone_btn: "Copy Phone",
+                form_name: "Your Full Name",
+                form_email: "Your Email",
+                form_message: "Your Message",
+                form_send_btn: "Send Message",
+            },
+            ar: {
+                // Login Page
+                login_title: "تسجيل الدخول",
+                username_placeholder: "اسم المستخدم",
+                password_placeholder: "كلمة المرور",
+                login_btn: "دخول",
+                // Sidebar
+                nav_about: "من أنا",
+                nav_services: "خدماتي",
+                nav_projects: "مشاريعي",
+                nav_contact: "اتصل بي",
+                // About Section
+                hero_title: "مرحباً، أنا ",
+                hero_subtitle: "مطور ويب / GOX",
+                about_text: "مطور ويب متخصص في بناء تجارب رقمية فعالة وجذابة. أعمل على تحويل الأفكار إلى واقع باستخدام أحدث تقنيات تطوير الواجهة الأمامية.",
+                discover_projects_btn: "اكتشف مشاريعي",
+                // Services Section
+                services_title: "خدماتي",
+                service_dev_title: "تطوير المواقع",
+                service_dev_text: "بناء مواقع وتطبيقات ويب ديناميكية باستخدام أحدث التقنيات.",
+                service_ui_title: "تصميم UX/UI",
+                service_ui_text: "تصميم واجهات جذابة وسهلة الاستخدام للمستخدمين.",
+                service_db_title: "إدارة قواعد البيانات",
+                service_db_text: "تصميم وتنفيذ قواعد بيانات قوية وفعالة.",
+                // Projects Section
+                projects_title: "مشاريعي",
+                project1_title: "اسم المشروع الأول",
+                project1_text: "وصف موجز للمشروع الأول وما تم إنجازه فيه.",
+                project2_title: "اسم المشروع الثاني",
+                project2_text: "وصف موجز للمشروع الثاني والتقنيات المستخدمة فيه.",
+                project3_title: "اسم المشروع الثالث",
+                project3_text: "وصف موجز للمشروع الثالث والنتائج التي تم تحقيقها.",
+                view_project_btn: "عرض المشروع",
+                // Contact Section
+                contact_title: "اتصل بي",
+                copy_email_btn: "نسخ البريد الإلكتروني",
+                copy_phone_btn: "نسخ رقم الهاتف",
+                form_name: "اسمك الكامل",
+                form_email: "بريدك الإلكتروني",
+                form_message: "رسالتك",
+                form_send_btn: "إرسال الرسالة",
+            }
+        };
+
+        let currentLang = 'en';
+
+        // Function to set language and direction
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Handle typing animation separately
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                const typingSpan = heroTitle.querySelector('.typing-animation');
+                if (typingSpan) {
+                    heroTitle.textContent = translations[lang].hero_title;
+                    heroTitle.appendChild(typingSpan);
+                }
+            }
+
+            // Set the lang and dir attributes on the html tag for proper styling
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const splashScreen = document.getElementById('splash-screen');
             const mainContent = document.getElementById('main-content');
@@ -640,6 +796,7 @@
             const closeSidebarBtn = document.querySelector('.close-sidebar');
             const sidebar = document.querySelector('.sidebar');
             const themeToggleBtns = document.querySelectorAll('.theme-toggle');
+            const langToggleButton = document.getElementById('lang-toggle');
 
             mainContent.classList.add('hidden');
 
@@ -668,6 +825,22 @@
                 });
             }
 
+            // Language toggle logic
+            if (langToggleButton) {
+                langToggleButton.addEventListener('click', () => {
+                    if (currentLang === 'en') {
+                        setLanguage('ar');
+                        langToggleButton.textContent = 'EN';
+                    } else {
+                        setLanguage('en');
+                        langToggleButton.textContent = 'AR';
+                    }
+                });
+            }
+            
+            // Set initial language
+            setLanguage(currentLang);
+
             document.querySelectorAll('.sidebar-nav a').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -691,5 +864,4 @@
         }
     </script>
 </body>
-
 </html>
